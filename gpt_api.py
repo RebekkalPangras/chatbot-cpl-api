@@ -1,8 +1,10 @@
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
+CORS(app)
 
 # Define your chat endpoint
 @app.route('/chat', methods=['POST'])
@@ -31,6 +33,7 @@ def chat():
 
         # Return the response
         return jsonify({'response': generated_message})
+
     else:
         return jsonify({'error': 'Failed to generate response'})
 
