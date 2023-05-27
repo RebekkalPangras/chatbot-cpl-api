@@ -34,8 +34,9 @@ def search_available_books(user_input, dataset):
 
 
 def locate_book(user_input):
+#   print(user_input)
   # File path for the dataset JSON file
-  dataset_file = "/dataset/available_books.json"
+  dataset_file = "./dataset/available_books.json"
 
   # Load the dataset
   dataset = load_dataset(dataset_file)

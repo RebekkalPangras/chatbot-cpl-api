@@ -1,41 +1,39 @@
-
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-import requests
-
+import openai
+import  book_locator
 app = Flask(__name__)
-CORS(app)
 
-# Define your chat endpoint
-@app.route('/chat', methods=['POST'])
-def chat():
-    data = request.json  # Get the input data from the request
-    message = data['message']  # Extract the chat message from the data
+# Set up OpenAI GPT credentials
+openai.api_key = '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'
 
-    # Send a request to the ChatGPT API
-    response = requests.post(
-        'https://api.openai.com/v1/chat/completions',
-        headers={
-            'Authorization': 'Bearer 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',
-            'Content-Type': 'application/json'
-        },
-        json={
-            'messages': [{'role': 'system', 'content': 'You are a user.'},
-                         {'role': 'user', 'content': message}]
-        }
+@app.route('/recommend', methods=['POST'])
+def recommend_books():
+    data = request.json
+    user_input = data["message"]
+
+    # Generate book recommendations using GPT
+    prompt = "I'm looking for book recommendations. " + user_input + "Provide me with a json format with title and author"
+    response = openai.Completion.create(
+        engine='text-davinci-003',
+        prompt=prompt,
+        max_tokens=50,
+        n=3,  # Number of recommendations to generate
+        temperature=0.7  # Controls the randomness of the generated text
     )
 
-    # Process the response
-    if response.status_code == 200:
-        output = response.json()
-        generated_message = output['choices'][0]['message']['content']
-        # Additional processing or formatting if needed
+    generated_recommendations = response.choices
+    # print(generated_recommendations)
+    recommended_books = []
 
-        # Return the response
-        return jsonify({'response': generated_message})
+    # Extract book titles from the generated text
+    for recommendation in generated_recommendations:
+        print(recommendation)
+        book_title = recommendation.text.strip()
+        recommended_books.append(book_title)
+    print(recommended_books)
+    # return book_locator.locate_book(jsonify({'recommendations': recommended_books}))
+    return jsonify({'recommendations': recommended_books})
 
-    else:
-        return jsonify({'error': 'Failed to generate response'})
 
 if __name__ == '__main__':
     app.run()
