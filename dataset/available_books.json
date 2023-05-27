@@ -1,0 +1,86 @@
+{
+    "books": [
+      {
+        "title": "The Girl on the Train",
+        "author": "Paula Hawkins",
+        "genre": "Thriller",
+        "location": {
+          "floor": 2,
+          "aisle": "A"
+        }
+      },
+      {
+        "title": "Gone Girl",
+        "author": "Gillian Flynn",
+        "genre": "Thriller",
+        "location": {
+          "floor": 3,
+          "aisle": "B"
+        }
+      },
+      {
+        "title": "The Da Vinci Code",
+        "author": "Dan Brown",
+        "genre": "Thriller",
+        "location": {
+          "floor": 1,
+          "aisle": "C"
+        }
+      },
+      {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "genre": "Adventure",
+        "location": {
+          "floor": 2,
+          "aisle": "D"
+        }
+      },
+      {
+        "title": "Treasure Island",
+        "author": "Robert Louis Stevenson",
+        "genre": "Adventure",
+        "location": {
+          "floor": 3,
+          "aisle": "E"
+        }
+      },
+      {
+        "title": "Diary of a Wimpy Kid",
+        "author": "Jeff Kinney",
+        "genre": "Comedy",
+        "location": {
+          "floor": 1,
+          "aisle": "F"
+        }
+      },
+      {
+        "title": "Bridget Jones's Diary",
+        "author": "Helen Fielding",
+        "genre": "Comedy",
+        "location": {
+          "floor": 2,
+          "aisle": "G"
+        }
+      },
+      {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "genre": "Drama",
+        "location": {
+          "floor": 3,
+          "aisle": "H"
+        }
+      },
+      {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "genre": "Drama",
+        "location": {
+          "floor": 1,
+          "aisle": "I"
+        }
+      }
+    ]
+  }
+  
